@@ -5,6 +5,7 @@ define(['jquery'], function ($) {
         init: function (config) {
             var loadTempl;
             var injectBeacon;
+            var setDialogClass;
 
             loadTempl = function (folder, template, wrapper, params, self, cb) {
                 var callbackInit, moduleFolder, scriptFolder, templateSuffix, cssSuffix, initMethod, moduleJs, loadMethod;
@@ -53,7 +54,20 @@ define(['jquery'], function ($) {
                 }
             };
 
+            setDialogClass = function (dialog) {
+                if (dialog.parent().find('.socialpanel:visible .dnn-persona-bar-page').hasClass('full-width')) {
+                    dialog.addClass('full-width-mode');
+                }
+                else {
+                    dialog.removeClass();
+                }
+            };
+
             return {
+                loaded: function(template) {
+                    return !!initializedModules[template];
+                },
+
                 loadTemplate: function (folder, template, wrapper, params, cb) {
                     var self = this;
                     loadTempl(folder, template, wrapper, params, self, cb, false);
@@ -117,6 +131,7 @@ define(['jquery'], function ($) {
                 },
 
                 confirm: function (text, confirmBtn, cancelBtn, confirmHandler, cancelHandler) {
+                    setDialogClass($('#confirmation-dialog'));
                     $('#confirmation-dialog > p').html(text);
                     $('#confirmation-dialog a#confirmbtn').html(confirmBtn).unbind('click').bind('click', function () {
                         if (typeof confirmHandler === 'function') confirmHandler.apply();
@@ -156,7 +171,7 @@ define(['jquery'], function ($) {
 
                     clearTimeout(self.fadeTimeout);
 
-                    notificationDialog.removeClass();
+                    setDialogClass(notificationDialog);
                     notificationMessage.removeClass().html(text);
                     if (size) {
                         notificationDialog.addClass(size);
@@ -164,8 +179,14 @@ define(['jquery'], function ($) {
                     if (clickToClose !== true) {
                         notificationDialog.addClass('close-hidden');
                     }
+					else {
+						notificationDialog.removeClass('close-hidden');
+					}
                     if (type === 'error') {
                         notificationDialog.addClass('errorMessage');
+                    }
+                    else {
+                        notificationDialog.removeClass('errorMessage');
                     }
                     closeNotification.html(closeButtonText)
                     closeNotification.on('click', function () {

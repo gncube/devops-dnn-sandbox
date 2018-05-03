@@ -1,15 +1,10 @@
 ﻿define(['main/config'], function (cf) {
     'use strict';
     var config = cf.init();
-    function loadScript() {
-        var url = "modules/dnn.servers/scripts/bundles/servers-bundle.js";
-        $.ajax({
-            dataType: "script",
-            cache: true,
-            url: url
-        });
-    }
+
     var init = function (wrapper, util, params, callback) {
+        params.handleTabViewInModule = true;
+
         window.dnn.initServers = function initServers() {
             if (typeof callback === 'function') {
                 callback();
@@ -17,11 +12,12 @@
             return {
                 utilities: util,
                 moduleName: "Servers",
+                path: params.path,
                 config: config,
                 settings: params.settings
             };
         };
-        loadScript();       
+        util.loadBundleScript('modules/dnn.servers/scripts/bundles/servers-bundle.js');
     };
 
     var load = function (params, callback) {
