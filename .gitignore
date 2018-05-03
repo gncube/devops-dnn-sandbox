@@ -197,3 +197,4 @@ FakesAssemblies/
 
 # Web Connection 
 dnn/web.connectionstrings.config
+/dnn/App_Data/Search
