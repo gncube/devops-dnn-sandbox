@@ -1,6 +1,6 @@
 ﻿// DotNetNuke® - http://www.dnnsoftware.com
 //
-// Copyright (c) 2002-2016, DNN Corp.
+// Copyright (c) 2002-2018, DNN Corp.
 // All rights reserved.
 
 ﻿if (typeof dnn === "undefined" || dnn === null) { dnn = {}; };
@@ -169,7 +169,7 @@ if (typeof dnn.ContentEditorManager === "undefined" || dnn.ContentEditorManager 
                 Sys.WebForms.PageRequestManager.getInstance().add_endRequest(this._refreshCompleteHandler);
                 this._refreshPaneId = paneId;
                 this._refreshCallback = callback;
-                __doPostBack(ajaxPanel.attr('id'), args);
+                window.setTimeout(function () { __doPostBack(ajaxPanel.attr('id'), args); }, 100);
             } else {
                 //save the args into cookie, after page reload then catch the cookie
                 //and float the module for drag
@@ -451,7 +451,7 @@ if (typeof dnn.ContentEditorManager === "undefined" || dnn.ContentEditorManager 
                         searchTerm: val,
                         excludeCategories: isAdmin ? '' : 'Admin,Professional',
                         sortBookmarks: true,
-                        topModule: 'None'
+                        topModule: htmlModuleName
                     }, $.proxy(this._renderModuleList, this));
                 }
             }

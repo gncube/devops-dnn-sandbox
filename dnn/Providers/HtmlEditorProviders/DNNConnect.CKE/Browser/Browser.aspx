@@ -347,10 +347,7 @@
                     RepeatDirection="Vertical" CssClass="ButtonList" AutoPostBack="true">
                   <asp:ListItem Text="Relative URL" Value="relLnk" Selected="True"></asp:ListItem>
                   <asp:ListItem Text="Absolute URL" Value="absLnk"></asp:ListItem>
-                  <asp:ListItem Text="Relative Secure URL (via LinkClick)" Value="lnkClick"></asp:ListItem>
-                  <asp:ListItem Text="Absolute Secure URL (via LinkClick)" Value="lnkAbsClick"></asp:ListItem>
                 </asp:RadioButtonList>
-                <asp:CheckBox id="TrackClicks" runat="server" Text="Track User Clicks?" Visible="false" />
             </td>
             </tr>
           </table>
@@ -380,9 +377,10 @@
         $(function() {
             var overrideFile = $('#<%= this.OverrideFile.ClientID %>').is(':checked');
             var maxFileSize = <%= this.MaxUploadSize %>;
+            var fileUploaderURL = "FileUploader.ashx?portalid=<%= HttpContext.Current.Request.QueryString["PortalID"] %>";
 
             $('#fileupload').fileupload({
-                url: "FileUploader.ashx",
+                url: fileUploaderURL,
                 acceptFileTypes: new RegExp('(\.|\/)(' + '<%= this.AcceptFileTypes %>' + ')', 'i'),
                 maxFileSize: maxFileSize,
                 done: function() {

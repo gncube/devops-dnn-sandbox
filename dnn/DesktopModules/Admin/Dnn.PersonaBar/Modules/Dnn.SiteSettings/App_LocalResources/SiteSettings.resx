@@ -646,7 +646,7 @@
     <value>Minimum length of index word is required. Integer must be greater than 0.</value>
   </data>
   <data name="lblCustomAnalyzer.Help" xml:space="preserve">
-    <value>If this is empty, system will use standard analyzer to index content. if you want to use custom analyzer, please type the full name of analyzer class in this field.  Note: If you want existing content to index with the new analyzer, you must visit the Admin &gt; Search Admin page of each site that you want re-index and click the "Re-Index Content" button.</value>
+    <value>If this is empty, system will use standard analyzer to index content. if you want to use custom analyzer, please type the full name of analyzer class in this field.  Note: If you want existing content to index with the new analyzer, you must visit Settings -&gt; Site Settings -&gt; Search in the Persona Bar for each site and click the "Re-index Content" button.</value>
   </data>
   <data name="lblCustomAnalyzer.Text" xml:space="preserve">
     <value>Custom Analyzer Type</value>
@@ -871,7 +871,7 @@
     <value>The language has been added.</value>
   </data>
   <data name="DefaultLanguage.Text" xml:space="preserve">
-    <value>*NOTE: This Language is the System Default</value>
+    <value>*NOTE: This Language is the Site Default</value>
   </data>
   <data name="plEnableContentLocalization.Help" xml:space="preserve">
     <value>Check this box to allow Administrators to enable content localization for their site.</value>
@@ -1042,7 +1042,7 @@
     <value>MicroServices</value>
   </data>
   <data name="MicroServicesDescription.Text" xml:space="preserve">
-    <value>Warning: once you enable a microservice, you will need contact support yo disable it.</value>
+    <value>Warning: once you enable a microservice, you will need contact support to disable it.</value>
   </data>
   <data name="SaveConfirm.Text" xml:space="preserve">
     <value>Are you sure you want to save the changes?</value>
@@ -1072,7 +1072,7 @@
     <value>Click Cancel now if you want to change the current site default.</value>
   </data>
   <data name="TranslationProgressBarText.Text" xml:space="preserve">
-    <value>[number] new pages are beign created for each language. Please wait as you localized pages are generated...</value>
+    <value>[number] new pages are being created for each language. Please wait as your localized pages are generated...</value>
   </data>
   <data name="TotalProgress.Text" xml:space="preserve">
     <value>Total Progress [number]%</value>
@@ -1183,7 +1183,7 @@
     <value>You are about to permanently remove all translations for the '{0}' language. Are you sure you want to continue?</value>
   </data>
   <data name="Mode.HelpText" xml:space="preserve">
-    <value>Select System to edit the base file for a given language; Host will create a custom version of the localized file for this installation.</value>
+    <value>Select Global to edit the base file for a given language; the other option will only affect the selected site.</value>
   </data>
   <data name="Mode.Label" xml:space="preserve">
     <value>Mode</value>
@@ -1207,7 +1207,7 @@
     <value>Are you sure you want to disable the language {0}</value>
   </data>
   <data name="MakeNeutralWarning.Text" xml:space="preserve">
-    <value>This will delete all translated version of the page. Only the default culture version of the page will remain. Are you sure you want to do this?</value>
+    <value>This will delete all translated versions of the page. Only the default culture version of the page will remain. Are you sure you want to do this?</value>
   </data>
   <data name="SiteSelectionLabel.Text" xml:space="preserve">
     <value>EDITING SITE</value>
@@ -1259,5 +1259,68 @@
   </data>
   <data name="EnableSortOrder.Help" xml:space="preserve">
     <value>Check this box to enable custom sorting of entries in this list.</value>
+  </data>
+  <data name="BrowseAction.Text" xml:space="preserve">
+    <value>Press {save|[ENTER]} to save, or {cancel|[ESC]} to cancel</value>
+  </data>
+  <data name="BrowseButton.Text" xml:space="preserve">
+    <value>Browse File System</value>
+  </data>
+  <data name="DefaultImageTitle.Text" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="DragDefault.Text" xml:space="preserve">
+    <value>Drag and Drop a File or Select an Option</value>
+  </data>
+  <data name="DragOver.Text" xml:space="preserve">
+    <value>Drag and Drop a File</value>
+  </data>
+  <data name="File.Text" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="Folder.Text" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="LinkButton.Text" xml:space="preserve">
+    <value>Enter URL Link</value>
+  </data>
+  <data name="LinkInputAction.Text" xml:space="preserve">
+    <value>Press {save|[ENTER]} to save, or {cancel|[ESC]} to cancel</value>
+  </data>
+  <data name="LinkInputPlaceholder.Text" xml:space="preserve">
+    <value>http://example.com/imagename.jpg</value>
+  </data>
+  <data name="LinkInputTitle.Text" xml:space="preserve">
+    <value>URL Link</value>
+  </data>
+  <data name="NotSpecified.Text" xml:space="preserve">
+    <value>&lt;None Specified&gt;</value>
+  </data>
+  <data name="SearchFilesPlaceHolder.Text" xml:space="preserve">
+    <value>Search Files...</value>
+  </data>
+  <data name="SearchFoldersPlaceHolder.Text" xml:space="preserve">
+    <value>Search Folders...</value>
+  </data>
+  <data name="UploadButton.Text" xml:space="preserve">
+    <value>Upload a File</value>
+  </data>
+  <data name="UploadComplete.Text" xml:space="preserve">
+    <value>Upload Complete</value>
+  </data>
+  <data name="UploadDefault.Text" xml:space="preserve">
+    <value>myImage.jpg</value>
+  </data>
+  <data name="UploadFailed.Text" xml:space="preserve">
+    <value>Upload Failed</value>
+  </data>
+  <data name="Uploading.Text" xml:space="preserve">
+    <value>Uploading...</value>
+  </data>
+  <data name="WrongFormat.Text" xml:space="preserve">
+    <value>Wrong Format</value>
+  </data>
+  <data name="Host.Text" xml:space="preserve">
+    <value>Host</value>
   </data>
 </root>

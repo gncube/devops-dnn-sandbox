@@ -236,3 +236,135 @@
 05/03/2018 11:46:39 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start RemoveModule:RadEditor Manager
 05/03/2018 11:46:39 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start AddModuleToPage:117
 05/03/2018 11:46:39 [INFO] DotNetNuke.Services.Upgrade.Upgrade End AddModuleToPage:117
+05/03/2018 11:54:56 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Newtonsoft.Json_10.00.03_Install.zip
+05/03/2018 11:55:05 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Applying Upgrade Script 09.02.00
+05/03/2018 11:55:05 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start UpgradeVersion:C:\PROJECTS\devops-dnn-sandbox\dnn\Providers\DataProviders\SqlDataProvider\09.02.00.SqlDataProvider
+05/03/2018 11:55:05 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start ExecuteScript:C:\PROJECTS\devops-dnn-sandbox\dnn\Providers\DataProviders\SqlDataProvider\09.02.00.SqlDataProvider
+05/03/2018 11:55:05 [INFO] DotNetNuke.Services.Upgrade.Upgrade End ExecuteScript:C:\PROJECTS\devops-dnn-sandbox\dnn\Providers\DataProviders\SqlDataProvider\09.02.00.SqlDataProvider
+05/03/2018 11:55:05 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start UpgradeVersion:C:\PROJECTS\devops-dnn-sandbox\dnn\Providers\DataProviders\SqlDataProvider\09.02.00.SqlDataProvider
+05/03/2018 11:55:05 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Upgrading Application to 9.2.0
+05/03/2018 11:55:05 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start Application Upgrades: 9.2.0
+05/03/2018 11:55:05 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start RemoveAdminPages://Admin//SearchEngineSiteMap
+05/03/2018 11:55:05 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start RemoveAdminPages://Admin//Solutions
+05/03/2018 11:55:05 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start RemoveAdminPages://Admin//BulkEmail
+05/03/2018 11:55:05 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start RemoveHostPage:Marketplace
+05/03/2018 11:55:05 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start RemoveHostPage:Module Definitions
+05/03/2018 11:55:05 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start RemoveHostPage:Portals
+05/03/2018 11:55:05 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start AddHostPage:Superuser Accounts
+05/03/2018 11:55:05 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start AddPage:Superuser Accounts
+05/03/2018 11:55:06 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start AddModuleToPage:15
+05/03/2018 11:55:06 [INFO] DotNetNuke.Services.Upgrade.Upgrade End AddModuleToPage:15
+05/03/2018 11:55:06 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Updating Config for 9.2.0
+05/03/2018 11:55:06 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start UpdateConfig:09.02.00
+05/03/2018 11:55:06 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start UpdateConfig:9.2.0
+05/03/2018 11:55:06 [INFO] DotNetNuke.Services.Installer.XmlMerge Start RemoveNode:
+05/03/2018 11:55:06 [INFO] DotNetNuke.Services.Upgrade.Upgrade End UpdateConfig:9.2.0
+05/03/2018 11:55:06 [INFO] DotNetNuke.Services.Upgrade.Upgrade End UpdateConfig:09.02.00
+05/03/2018 11:55:06 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Deleting Older Files for 9.2.0
+05/03/2018 11:55:06 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start DeleteFiles:09.02.00
+05/03/2018 11:55:06 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Upgrading Application
+05/03/2018 11:55:07 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing Module - DDRMenu_09.02.00_Install.zip
+05/03/2018 11:55:07 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\DDRMenu_09.02.00_Install.zip
+05/03/2018 11:55:08 [INFO] DotNetNuke.Services.Installer.XmlMerge Start UpdateNode: keyAttribute=name
+05/03/2018 11:55:08 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing Library - Dnn.EditBar.UI_01.05.00_Install.zip
+05/03/2018 11:55:08 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Dnn.EditBar.UI_01.05.00_Install.zip
+05/03/2018 11:55:08 [INFO] DotNetNuke.Services.Installer.XmlMerge Start RemoveNode:
+05/03/2018 11:55:08 [INFO] DotNetNuke.Services.Installer.XmlMerge Start UpdateNode: keyAttribute=name
+05/03/2018 11:55:11 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing Library - Dnn.PersonaBar.UI_01.05.00_Install.zip
+05/03/2018 11:55:11 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Dnn.PersonaBar.UI_01.05.00_Install.zip
+05/03/2018 11:55:18 [INFO] DotNetNuke.Services.Installer.XmlMerge Start RemoveNode:
+05/03/2018 11:55:18 [INFO] DotNetNuke.Services.Installer.XmlMerge Start AddNode:
+05/03/2018 11:55:18 [INFO] DotNetNuke.Services.Installer.XmlMerge Start RemoveNode:
+05/03/2018 11:55:18 [INFO] DotNetNuke.Services.Installer.XmlMerge Start AddNode:
+05/03/2018 11:55:18 [INFO] DotNetNuke.Services.Installer.XmlMerge Start RemoveNode:
+05/03/2018 11:55:18 [INFO] DotNetNuke.Services.Installer.XmlMerge Start AddNode:
+05/03/2018 11:55:18 [INFO] DotNetNuke.Services.Installer.XmlMerge Start RemoveNode:
+05/03/2018 11:55:18 [INFO] DotNetNuke.Services.Installer.XmlMerge Start AddNode:
+05/03/2018 11:55:18 [INFO] DotNetNuke.Services.Installer.XmlMerge Start RemoveNode:
+05/03/2018 11:55:18 [INFO] DotNetNuke.Services.Installer.XmlMerge Start UpdateNode: keyAttribute=name
+05/03/2018 11:55:18 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing Library - DNNCE_01_Web.Deprecated_09.02.00_Install.zip
+05/03/2018 11:55:18 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\DNNCE_01_Web.Deprecated_09.02.00_Install.zip
+05/03/2018 11:55:18 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing Connector - DNNCE_AzureConnector_09.02.00_Install.zip
+05/03/2018 11:55:18 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\DNNCE_AzureConnector_09.02.00_Install.zip
+05/03/2018 11:55:18 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing Module - DNNCE_Console_09.02.00_Install.zip
+05/03/2018 11:55:18 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\DNNCE_Console_09.02.00_Install.zip
+05/03/2018 11:55:19 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing Module - DNNCE_CoreMessaging_09.02.00_Install.zip
+05/03/2018 11:55:19 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\DNNCE_CoreMessaging_09.02.00_Install.zip
+05/03/2018 11:55:22 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing Module - DNNCE_DigitalAssetsManagement_09.02.00_Install.zip
+05/03/2018 11:55:22 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\DNNCE_DigitalAssetsManagement_09.02.00_Install.zip
+05/03/2018 11:55:24 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing Module - DNNCE_HtmlEditorManager_09.02.00_Install.zip
+05/03/2018 11:55:24 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\DNNCE_HtmlEditorManager_09.02.00_Install.zip
+05/03/2018 11:55:24 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing Module - DNNCE_HTML_09.02.00_Install.zip
+05/03/2018 11:55:24 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\DNNCE_HTML_09.02.00_Install.zip
+05/03/2018 11:55:25 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing Module - DNNCE_Journal_09.02.00_Install.zip
+05/03/2018 11:55:25 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\DNNCE_Journal_09.02.00_Install.zip
+05/03/2018 11:55:27 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing Module - DNNCE_MemberDirectory_09.02.00_Install.zip
+05/03/2018 11:55:27 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\DNNCE_MemberDirectory_09.02.00_Install.zip
+05/03/2018 11:55:27 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing Module - DNNCE_ModuleCreator_09.02.00_Install.zip
+05/03/2018 11:55:27 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\DNNCE_ModuleCreator_09.02.00_Install.zip
+05/03/2018 11:55:29 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing Module - DNNCE_RazorHost_09.02.00_Install.zip
+05/03/2018 11:55:29 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\DNNCE_RazorHost_09.02.00_Install.zip
+05/03/2018 11:55:30 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing Library - DNNCE_SiteExportImport_09.02.00_Install.zip
+05/03/2018 11:55:30 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\DNNCE_SiteExportImport_09.02.00_Install.zip
+05/03/2018 11:55:30 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing Module - DNNCE_SocialGroups_09.02.00_Install.zip
+05/03/2018 11:55:30 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\DNNCE_SocialGroups_09.02.00_Install.zip
+05/03/2018 11:55:31 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing Library - DNNCE_Website.Deprecated_09.02.00_Install.zip
+05/03/2018 11:55:31 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\DNNCE_Website.Deprecated_09.02.00_Install.zip
+05/03/2018 11:55:32 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing JavaScript_Library - jQuery.zip
+05/03/2018 11:55:32 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\JavaScriptLibrary\jQuery.zip
+05/03/2018 11:55:32 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing Provider - AspNetClientCapabilityProvider_09.02.00_Install.zip
+05/03/2018 11:55:32 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Provider\AspNetClientCapabilityProvider_09.02.00_Install.zip
+05/03/2018 11:55:32 [INFO] DotNetNuke.Services.Installer.XmlMerge Start UpdateNode: keyAttribute=name
+05/03/2018 11:55:32 [INFO] DotNetNuke.Services.Installer.XmlMerge Start UpdateNode: keyAttribute=name
+05/03/2018 11:55:32 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing Provider - DNNCE_FolderProviders_09.02.00_Install.zip
+05/03/2018 11:55:32 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Provider\DNNCE_FolderProviders_09.02.00_Install.zip
+05/03/2018 11:55:33 [INFO] DotNetNuke.Services.Installer.XmlMerge Start UpdateNode: keyAttribute=name
+05/03/2018 11:55:33 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing Provider - DNNConnect.CKEditorProvider_01.00.04_Install.zip
+05/03/2018 11:55:33 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Provider\DNNConnect.CKEditorProvider_01.00.04_Install.zip
+05/03/2018 11:55:49 [INFO] DotNetNuke.Services.Installer.XmlMerge Start UpdateNode: keyAttribute=name
+05/03/2018 11:55:51 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing PersonaBar - Dnn.PersonaBar.AdminLogs_01.05.00_Install.zip
+05/03/2018 11:55:51 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Dnn.PersonaBar.AdminLogs_01.05.00_Install.zip
+05/03/2018 11:55:51 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing PersonaBar - Dnn.PersonaBar.ConfigConsole_01.05.00_Install.zip
+05/03/2018 11:55:51 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Dnn.PersonaBar.ConfigConsole_01.05.00_Install.zip
+05/03/2018 11:55:51 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing PersonaBar - Dnn.PersonaBar.Connectors_01.05.00_Install.zip
+05/03/2018 11:55:51 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Dnn.PersonaBar.Connectors_01.05.00_Install.zip
+05/03/2018 11:55:52 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing PersonaBar - Dnn.PersonaBar.CssEditor_01.05.00_Install.zip
+05/03/2018 11:55:52 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Dnn.PersonaBar.CssEditor_01.05.00_Install.zip
+05/03/2018 11:55:52 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing PersonaBar - Dnn.PersonaBar.Extensions_01.05.00_Install.zip
+05/03/2018 11:55:52 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Dnn.PersonaBar.Extensions_01.05.00_Install.zip
+05/03/2018 11:55:52 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing PersonaBar - Dnn.PersonaBar.Licensing_01.05.00_Install.zip
+05/03/2018 11:55:52 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Dnn.PersonaBar.Licensing_01.05.00_Install.zip
+05/03/2018 11:55:53 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing PersonaBar - Dnn.PersonaBar.Prompt_01.05.00_Install.zip
+05/03/2018 11:55:53 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Dnn.PersonaBar.Prompt_01.05.00_Install.zip
+05/03/2018 11:55:53 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing PersonaBar - Dnn.PersonaBar.Recyclebin_01.05.00_Install.zip
+05/03/2018 11:55:53 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Dnn.PersonaBar.Recyclebin_01.05.00_Install.zip
+05/03/2018 11:55:53 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing PersonaBar - Dnn.PersonaBar.Roles_01.05.00_Install.zip
+05/03/2018 11:55:53 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Dnn.PersonaBar.Roles_01.05.00_Install.zip
+05/03/2018 11:55:53 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing PersonaBar - Dnn.PersonaBar.Security_01.05.00_Install.zip
+05/03/2018 11:55:54 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Dnn.PersonaBar.Security_01.05.00_Install.zip
+05/03/2018 11:55:54 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing PersonaBar - Dnn.PersonaBar.Seo_01.05.00_Install.zip
+05/03/2018 11:55:54 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Dnn.PersonaBar.Seo_01.05.00_Install.zip
+05/03/2018 11:55:54 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing PersonaBar - Dnn.PersonaBar.Servers_01.05.00_Install.zip
+05/03/2018 11:55:54 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Dnn.PersonaBar.Servers_01.05.00_Install.zip
+05/03/2018 11:55:55 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing PersonaBar - Dnn.PersonaBar.SiteSettings_01.05.00_Install.zip
+05/03/2018 11:55:55 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Dnn.PersonaBar.SiteSettings_01.05.00_Install.zip
+05/03/2018 11:55:55 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing PersonaBar - Dnn.PersonaBar.Sites_01.05.00_Install.zip
+05/03/2018 11:55:55 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Dnn.PersonaBar.Sites_01.05.00_Install.zip
+05/03/2018 11:55:55 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing PersonaBar - Dnn.PersonaBar.SqlConsole_01.05.00_Install.zip
+05/03/2018 11:55:55 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Dnn.PersonaBar.SqlConsole_01.05.00_Install.zip
+05/03/2018 11:55:56 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing PersonaBar - Dnn.PersonaBar.TaskScheduler_01.05.00_Install.zip
+05/03/2018 11:55:56 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Dnn.PersonaBar.TaskScheduler_01.05.00_Install.zip
+05/03/2018 11:55:56 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing PersonaBar - Dnn.PersonaBar.Themes_01.05.00_Install.zip
+05/03/2018 11:55:56 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Dnn.PersonaBar.Themes_01.05.00_Install.zip
+05/03/2018 11:55:56 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing PersonaBar - Dnn.PersonaBar.Users_01.05.00_Install.zip
+05/03/2018 11:55:56 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Dnn.PersonaBar.Users_01.05.00_Install.zip
+05/03/2018 11:56:08 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing PersonaBar - Dnn.PersonaBar.Vocabularies_01.05.00_Install.zip
+05/03/2018 11:56:08 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Dnn.PersonaBar.Vocabularies_01.05.00_Install.zip
+05/03/2018 11:56:08 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing JavaScript_Library - jQueryMigrate.zip
+05/03/2018 11:56:08 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\JavaScriptLibrary\jQueryMigrate.zip
+05/03/2018 11:56:08 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing JavaScript_Library - jQueryUI.zip
+05/03/2018 11:56:08 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\JavaScriptLibrary\jQueryUI.zip
+05/03/2018 11:56:09 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing PersonaBar - Dnn.PersonaBar.Pages_01.05.00_Install.zip
+05/03/2018 11:56:09 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Dnn.PersonaBar.Pages_01.05.00_Install.zip
+05/03/2018 11:56:09 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Installing PersonaBar - Dnn.PersonaBar.SiteImportExport_01.05.00_Install.zip
+05/03/2018 11:56:09 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:C:\PROJECTS\devops-dnn-sandbox\dnn\Install\Module\Dnn.PersonaBar.SiteImportExport_01.05.00_Install.zip
