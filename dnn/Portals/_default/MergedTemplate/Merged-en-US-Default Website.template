@@ -652,7 +652,7 @@
 &amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt;
 &amp;lt;div class=&amp;quot;col-md-12&amp;quot;&amp;gt;
 &amp;lt;div class=&amp;quot;col-md-12 company-intro&amp;quot;&amp;gt;
-&amp;lt;p&amp;gt;DNN (formerly DotNetNuke) provides a suite of solutions for creating rich, rewarding online experiences for customers, partners and employees.  DNN products and technology are the foundation for 750,000+ websites worldwide.  In addition to our commercial CMS and Social Community solutions, DNN is the steward of the DotNetNuke Open Source Project.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;DNN (formerly DotNetNuke) provides a suite of solutions for creating rich, rewarding online experiences for customers, partners and employees.  DNN products and technology are the foundation for 750,000+ websites worldwide.  In addition to our commercial CMS and Social Community solutiosn, DNN is the steward of the DotNetNuke Open Source Project.&amp;lt;/p&amp;gt;
 &amp;lt;/div&amp;gt;
 &amp;lt;/div&amp;gt;
 &amp;lt;/div&amp;gt;
@@ -663,7 +663,7 @@
 &amp;lt;h3&amp;gt;Keep in touch with DNN&amp;lt;/h3&amp;gt;
 
 &amp;lt;ul class=&amp;quot;row&amp;quot;&amp;gt;
-&amp;lt;li class=&amp;quot;facebook col-xs-4&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;http://facebook.com/DNNsoftware&amp;quot; target=&amp;quot;_blank&amp;quot; aria-label=&amp;quot;Facebook&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;li class=&amp;quot;facebook col-xs-4&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;http://facebook.com/dotnetnuke&amp;quot; target=&amp;quot;_blank&amp;quot; aria-label=&amp;quot;Facebook&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
 &amp;lt;li class=&amp;quot;linkedin col-xs-4&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;http://www.linkedin.com/company/207975&amp;quot; target=&amp;quot;_blank&amp;quot; aria-label=&amp;quot;LinkedIn&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
 &amp;lt;li class=&amp;quot;twitter col-xs-4&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;http://twitter.com/dnncorp&amp;quot; target=&amp;quot;_blank&amp;quot; aria-label=&amp;quot;Twitter&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
 &amp;lt;li class=&amp;quot;youtube col-xs-4&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;http://www.youtube.com/user/dotnetnuke&amp;quot; target=&amp;quot;_blank&amp;quot; aria-label=&amp;quot;Youtube&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
@@ -3403,6 +3403,14 @@
           <filename>home.css</filename>
           <height>0</height>
           <size>12278</size>
+          <width>0</width>
+        </file>
+        <file>
+          <contenttype>application/octet-stream</contenttype>
+          <extension>css</extension>
+          <filename>portal.css</filename>
+          <height>0</height>
+          <size>3988</size>
           <width>0</width>
         </file>
       </files>

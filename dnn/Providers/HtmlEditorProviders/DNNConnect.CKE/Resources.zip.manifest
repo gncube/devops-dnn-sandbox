@@ -458,14 +458,6 @@
     </file>
     <file>
       <path>js/ckeditor/4.5.3/images/</path>
-      <name>HostHasSetting.png</name>
-    </file>
-    <file>
-      <path>js/ckeditor/4.5.3/images/</path>
-      <name>HostNoSetting.png</name>
-    </file>
-    <file>
-      <path>js/ckeditor/4.5.3/images/</path>
       <name>information.png</name>
     </file>
     <file>

@@ -6,6 +6,15 @@
         var utility;
         var config = cf.init();
 
+        function loadScript() {
+            var url = "modules/dnn.adminlogs/scripts/bundles/adminLogs-bundle.js";
+            $.ajax({
+                dataType: "script",
+                cache: true,
+                url: url
+            });
+        }
+
         var init = function (wrapper, util, params, callback) {
             identifier = params.identifier;
             utility = util;
@@ -17,7 +26,7 @@
                     moduleName: 'AdminLogs'
                 };
             };
-            utility.loadBundleScript('modules/dnn.adminlogs/scripts/bundles/adminLogs-bundle.js');
+            loadScript();
 
             if (typeof callback === 'function') {
                 callback();

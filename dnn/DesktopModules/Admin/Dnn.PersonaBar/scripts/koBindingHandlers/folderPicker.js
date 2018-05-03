@@ -22,7 +22,6 @@ function ($, ko) {
         var selectFolderCallback = koOptions.selectFolderCallback;
         var koElement = koOptions.koElement;
         var id = "#{0}".replace(/\{0\}/g, element.id);
-        var folderPicker;
 
         var selectFolderProxyCallback = function () {
             selectFolderCallback.call(koElement, this.selectedItem());
@@ -60,14 +59,10 @@ function ($, ko) {
 
         dnn.createDropDownList(id, options, {});
 
-        $(function () {
-            folderPicker = dnn[element.id];
-        });
+        var folderPicker = dnn[element.id];
 
         koElement.subscribe(function (folder) {
-            if (folderPicker) {
-                folderPicker.selectedItem({ key: folder.FolderID, value: folder.FolderName });
-            }
+            folderPicker.selectedItem({ key: folder.FolderID, value: folder.FolderName });
         });
     };
 

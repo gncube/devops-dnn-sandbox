@@ -21,7 +21,7 @@ define(['jquery'], function ($) {
                     if (!settings) settings = $.extend(defaultSettings, cfg.userSettings);
                     return settings;
                 },
-                save: function (s, success, error) {
+                save: function (s, callback) {
                     if (!s) return;
                     settings = $.extend(defaultSettings, s);
 
@@ -40,10 +40,10 @@ define(['jquery'], function ($) {
 
                         $.extend(cfg.userSettings, settings);
 
-                        if (typeof success === 'function') {
-                            success();
+                        if (typeof callback === 'function') {
+                            callback();
                         }
-                    }, error);
+                    });
                 }
             };
         }

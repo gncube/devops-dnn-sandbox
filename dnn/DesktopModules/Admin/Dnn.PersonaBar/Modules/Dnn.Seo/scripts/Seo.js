@@ -6,9 +6,19 @@ define(['jquery',
         var utility;
         var config = cf.init();
 
+        function loadScript() {
+            var url = "modules/dnn.seo/scripts/bundles/seo-bundle.js";
+            $.ajax({
+                dataType: "script",
+                cache: true,
+                url: url
+            });
+        }
+
         return {
             init: function (wrapper, util, params, callback) {
                 utility = util;
+
 
                 window.dnn.initSeo = function initializeSeo() {
                     return {
@@ -17,7 +27,7 @@ define(['jquery',
                         moduleName: 'Seo'
                     };
                 };
-                utility.loadBundleScript('modules/dnn.seo/scripts/bundles/seo-bundle.js');
+                loadScript();
 
                 if (typeof callback === 'function') {
                     callback();

@@ -1,6 +1,6 @@
 ﻿// DotNetNuke® - http://www.dnnsoftware.com
 //
-// Copyright (c) 2002-2018, DNN Corp.
+// Copyright (c) 2002-2016, DNN Corp.
 // All rights reserved.
 
 if (typeof dnn === "undefined" || dnn === null) { dnn = {}; };
@@ -96,6 +96,10 @@ dnn.ContentEditorManager = $.extend({}, dnn.ContentEditorManager, {
 		        catchedPanes++;
 
 		        $(instance).sortable('option', 'helper', function(event, element) {
+			        if (element.hasClass('floating')) {
+				        return element.addClass('forDrag');
+			        }
+
 			        var helper = element.clone();
 			        helper.addClass('floating forDrag').removeClass('CatchDragState');
 
@@ -106,14 +110,6 @@ dnn.ContentEditorManager = $.extend({}, dnn.ContentEditorManager, {
 			        var title = helper.find('span[id$="titleLabel"]:eq(0)').html();
 			        $('<span class="title" />').appendTo($dragContent).html(title);
 
-		            var $body = $(document.body);
-		            var positionCss = $body.css('position');
-		            var marginLeft = parseInt($body.css('margin-left'));
-			        if (positionCss === "relative" && marginLeft) {
-			            helper.css('margin-left', (0 - marginLeft) + "px");
-			        }
-
-			        $body.append(helper);
 			        return helper;
 		        });
 		        $(instance).sortable('option', 'cursorAt', { left: 0, top: 0 });
@@ -185,8 +181,7 @@ dnn.ContentEditorManager = $.extend({}, dnn.ContentEditorManager, {
     };
 
     dnn.ContentEditorManager.sortStart = function(event, ui) {
-        window['cem_dragging'] = true; //add a global status when dragging module/layout.
-        $(document.body).addClass('dnnModuleSorting');
+    	window['cem_dragging'] = true; //add a global status when dragging module/layout.
 	    $(this).data('sortStartEvent').call(this, event, ui);
     };
 
@@ -194,7 +189,6 @@ dnn.ContentEditorManager = $.extend({}, dnn.ContentEditorManager, {
         var newPane = ui.item.parent(), oldPane = $(this);
         var instance = this;
         var $item = ui.item;
-        $(document.body).removeClass('dnnModuleSorting');
 		$('div.DnnModule.CatchDragState').removeClass('dragging').trigger('dragend');
         $item.removeClass('floating').css({left: '', top: '', position: '', zIndex: ''});
         $('.actionMenu').removeClass('floating');
@@ -315,7 +309,7 @@ dnn.ContentEditorManager = $.extend({}, dnn.ContentEditorManager, {
         dnn.ContentEditorManager.catchSortEvents();
     });
 
-	$(window).on('load', function handlerNewModuleFromCookie() {
+    $(window).load(function handlerNewModuleFromCookie() {
         //handle the floating module from cookie
         var handleNewModuleFromCookie = function handleNewModuleFromCookie() {
             var moduleDialog = dnn.ContentEditorManager.getModuleDialog();

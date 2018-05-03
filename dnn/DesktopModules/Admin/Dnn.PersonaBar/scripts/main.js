@@ -18,21 +18,21 @@
             
         },
         map: {
-            '*': {
-                'dnn.jquery': ['../../../../../Resources/Shared/Scripts/dnn.jquery'],
-                'dnn.jquery.extensions': ['../../../../../Resources/Shared/Scripts/dnn.jquery.extensions'],
-                'dnn.extensions': ['../../../../../Resources/Shared/scripts/dnn.extensions'],
-                'jquery.tokeninput': ['../../../../../Resources/Shared/components/Tokeninput/jquery.tokeninput'],
-                'dnn.jScrollBar': ['../../../../../Resources/Shared/scripts/jquery/dnn.jScrollBar'],
-                'dnn.servicesframework': ['../../../../../js/dnn.servicesframework'],
-                'dnn.DataStructures': ['../../../../../Resources/Shared/scripts/dnn.DataStructures'],
-                'jquery.mousewheel': ['../../../../../Resources/Shared/scripts/jquery/jquery.mousewheel'],
-                'dnn.TreeView': ['../../../../../Resources/Shared/scripts/TreeView/dnn.TreeView'],
-                'dnn.DynamicTreeView': ['../../../../../Resources/Shared/scripts/TreeView/dnn.DynamicTreeView'],
-                'dnn.DropDownList': ['../../../../../Resources/Shared/Components/DropDownList/dnn.DropDownList'],
-                'css.DropDownList': ['css!../../../../../Resources/Shared/components/DropDownList/dnn.DropDownList.css'],
-                'css.jScrollBar': ['css!../../../../../Resources/Shared/scripts/jquery/dnn.jScrollBar.css']
-            }
+			'*': {
+			    'dnn.jquery': ['../../../../../Resources/Shared/Scripts/dnn.jquery'],
+			    'dnn.jquery.extensions': ['../../../../../Resources/Shared/Scripts/dnn.jquery.extensions'],
+			    'dnn.extensions': ['../../../../../Resources/Shared/scripts/dnn.extensions'],
+			    'jquery.tokeninput': ['../../../../../Resources/Shared/components/Tokeninput/jquery.tokeninput'],
+			    'dnn.jScrollBar': ['../../../../../Resources/Shared/scripts/jquery/dnn.jScrollBar'],
+			    'dnn.servicesframework': ['../../../../../js/dnn.servicesframework'],
+			    'dnn.DataStructures': ['../../../../../Resources/Shared/scripts/dnn.DataStructures'],
+			    'jquery.mousewheel': ['../../../../../Resources/Shared/scripts/jquery/jquery.mousewheel'],
+			    'dnn.TreeView': ['../../../../../Resources/Shared/scripts/TreeView/dnn.TreeView'],
+			    'dnn.DynamicTreeView': ['../../../../../Resources/Shared/scripts/TreeView/dnn.DynamicTreeView'],
+			    'dnn.DropDownList': ['../../../../../Resources/Shared/Components/DropDownList/dnn.DropDownList'],
+			    'css.DropDownList': ['css!../../../../../Resources/Shared/components/DropDownList/dnn.DropDownList.css'],
+			    'css.jScrollBar': ['css!../../../../../Resources/Shared/scripts/jquery/dnn.jScrollBar.css']
+	        }
         },
         packages: [{
             name: "codemirror",
@@ -52,21 +52,6 @@
             throw err;
         }
     };
-
-    if (!String.prototype.includes) {
-        String.prototype.includes = function(search, start) {
-            'use strict';
-            if (typeof start !== 'number') {
-                start = 0;
-            }
-    
-            if (start + search.length > this.length) {
-                return false;
-            } else {
-                return this.indexOf(search, start) !== -1;
-            }
-        };
-    }
 })();
 
 // Enable React Dev Tools inside the iframe, this should be loaded before React has been loaded
@@ -113,8 +98,7 @@ require(['jquery', 'knockout', 'moment', '../util', '../sf', '../config', './../
         }
         
         var menuViewModel = utility.buildMenuViewModel(config.menuStructure);
-        var cachedPersonaBarPageWidth = 860;
-
+        
         // define util -- very important
         var util = {
             sf: sf.init(config.siteRoot, config.tabId, config.antiForgeryToken),
@@ -122,35 +106,6 @@ require(['jquery', 'knockout', 'moment', '../util', '../sf', '../config', './../
             moment: moment,
             persistent: persistent.init(config, sf),
             inAnimation: inAnimation,
-
-            setConfirmationDialogPosition: function () {
-                var confirmation = document.getElementById('confirmation-dialog');
-                var personaBarPage = document.getElementsByClassName('dnn-persona-bar-page')[0];
-                var condition = personaBarPage.classList.contains('full-width')
-                confirmation.classList.toggle("confirmation-dialog-full-width-center", condition);
-            },
-
-
-            openSocialTasks: function openTaskWindow(){
-                 var taskWindow = $('.socialtasks');
-                 taskWindow.css({visibility:'visible'});
-            },
-
-            closeSocialTasks: function closeTaskWindow() {
-                 var taskWindow = $('.socialtasks')
-                 taskWindow.css({visibility:'hidden'});
-            },
-
-            expandPersonaBarPage: function expandPersonaBar(){
-                var personaBarPage = $(".dnn-persona-bar-page")
-                personaBarPage.css({width:"1159px"});
-            },
-
-            contractPersonaBarPage: function contractPersonaBar(){
-                var personaBarPage = $('.dnn-persona-bar-page');
-                personaBarPage.css({width: cachedPersonaBarPageWidth+'px'});
-            },
-
             closePersonaBar: function handleClosePersonarBar(callback, keepSelection) {
                 var self = this;
 
@@ -167,50 +122,55 @@ require(['jquery', 'knockout', 'moment', '../util', '../sf', '../config', './../
                     $('.btn_panel, .hovermenu > ul > li').removeClass('selected');
                 } else {
                     $('.btn_panel, .hovermenu > ul > li').removeClass('selected pending');
-                    self.panelViewData(null, null);
                 }
 
                 parentBody.style.overflow = "auto";
                 body.style.overflow = "hidden";
 
-                inAnimation = true;
-                $personaBarPlaceholder.hide();
-                self.leaveCustomModules();
-                var $activePanel = $('#' + utility.getPanelIdFromPath(activePath));
-                $activePanel.animate({ left: -860 }, 189, 'linear', function () {
-                    $('.socialpanel').css({ left: -860 }).hide();
-                    $mask.animate({
-                        opacity: 0.0
-                    }, 200, function () {
-                        $iframe.width(personaBarMenuWidth);
+                function closeCallback() {
+                    inAnimation = true;
+                    $personaBarPlaceholder.hide();
+                    self.leaveCustomModules();
+                    var $activePanel = $('#' + utility.getPanelIdFromPath(activePath));
+                    $activePanel.animate({ left: -860 }, 189, 'linear', function () {
+                        $('.socialpanel').css({ left: -860 }).hide();
+                        $mask.animate({
+                            opacity: 0.0
+                        }, 200, function () {
+                            $iframe.width(personaBarMenuWidth);
 
-                        // for mobile pad device...
-                        if (onTouch) {
-                            iframe.style["min-width"] = "0";
-                            iframe.style.position = "fixed";
-                        }
+                            // for mobile pad device...
+                            if (onTouch) {
+                                iframe.style["min-width"] = "0";
+                                iframe.style.position = "fixed";
+                            }
 
-                        $mask.css("display", "none");
-                        $showSiteButton.hide();
-                        activePath = null;
-                        inAnimation = false;
-                        $(document).unbind('keyup');
+                            $mask.css("display", "none");
+                            $showSiteButton.hide();
+                            activePath = null;
+                            inAnimation = false;
+                            $(document).unbind('keyup');
 
-                        eventEmitter.emitClosePanelEvent();
+                            eventEmitter.emitClosePanelEvent();
 
-                        if (typeof callback === 'function') {
-                            callback();
-                        }
+                            if (typeof callback === 'function') {
+                                callback();
+                            }
+                        });
                     });
-                });
+                };
 
-                if (!keepSelection) {
-                    saveUserSetting({
+                if (keepSelection) {
+                    closeCallback();
+                } else {
+                    self.persistent.save({
                         expandPersonaBar: false
-                    });
+                    }, closeCallback);
                 }
             },
             loadPanel: function handleLoadPanel(identifier, params) {
+                var savePersistentCallback;
+
                 if (inAnimation) return;
 
                 var $menuItem = $('ul.personabarnav').find('[id="' + identifier + '"]');
@@ -224,8 +184,6 @@ require(['jquery', 'knockout', 'moment', '../util', '../sf', '../config', './../
 
                 if (!params.settings) {
                     params.settings = util.findMenuSettings(params.identifier);
-                } else {
-                    params.settings = $.extend({}, util.findMenuSettings(params.identifier), params.settings);
                 }
 
                 if (!params.moduleName) {
@@ -252,7 +210,7 @@ require(['jquery', 'knockout', 'moment', '../util', '../sf', '../config', './../
                 if (activePath === path && activemodule === moduleName) {
                     return;
                 }
-                $showSiteButton.hide();
+
                 var $menuItems = $(".btn_panel");
                 var $hoverMenuItems = $(".hovermenu > ul > li");
                 
@@ -279,49 +237,51 @@ require(['jquery', 'knockout', 'moment', '../util', '../sf', '../config', './../
                     $personaBarPanels.append($panel);
                 }
                 var template = path;
-                var loaded = self.loaded(template);
 
                 if ($mask.css("display") === 'none') {
-                    activePath = path;
-                    activemodule = moduleName;
-                    eventEmitter.emitOpenPanelEvent();
+                    savePersistentCallback = function () {
+                        activePath = path;
+                        activemodule = moduleName;
+                        $showSiteButton.show();
+                        eventEmitter.emitOpenPanelEvent();
 
-                    iframe.style.width = "100%";
-                    parentBody.style.overflow = "hidden";
-                    body.style.overflow = 'auto';
+                        iframe.style.width = "100%";
+                        parentBody.style.overflow = "hidden";
+                        body.style.overflow = 'auto';
 
-                    // for mobile pad device...
-                    if (onTouch) {
-                        iframe.style["min-width"] = "1245px";
-                        iframe.style.position = "fixed";
-                    }
+                        // for mobile pad device...
+                        if (onTouch) {
+                            iframe.style["min-width"] = "1245px";
+                            iframe.style.position = "fixed";
+                        }
 
-                    $mask.css("display", "block");
-                    inAnimation = true;
-                    $mask.animate({
-                        opacity: 0.85
-                    }, 200, function () {
-                        $panel.show().delay(100).animate({ left: personaBarMenuWidth }, 189, 'linear', function () {
-                            inAnimation = false;
-                            $personaBarPlaceholder.show();
-                            self.loadTemplate(folderName, template, $panel, params, function () {
-                                self.panelLoaded(params, loaded);
-                            });
-                            $(document).keyup(function (e) {
-                                if (e.keyCode === 27) {
-                                    e.preventDefault();
-                                    if (!window.dnn.stopEscapeFromClosingPB) {
-                                        util.closePersonaBar(null, true);
+                        $mask.css("display", "block");
+                        inAnimation = true;
+                        $mask.animate({
+                            opacity: 0.85
+                        }, 200, function () {
+                            $panel.show().delay(100).animate({ left: personaBarMenuWidth }, 189, 'linear', function () {
+                                inAnimation = false;
+                                $personaBarPlaceholder.show();
+                                self.loadTemplate(folderName, template, $panel, params, function () {
+                                    self.panelLoaded(params);
+                                });
+                                $(document).keyup(function (e) {
+                                    if (e.keyCode === 27) {
+                                        e.preventDefault();
+                                        if (!window.dnn.stopEscapeFromClosingPB) {
+                                            util.closePersonaBar(null, true);
+                                        }
                                     }
-                                }
+                                });
                             });
                         });
-                    });
+                    };
 
-                    saveUserSetting({
+                    self.persistent.save({
                         expandPersonaBar: true,
                         activeIdentifier: identifier
-                    });
+                    }, savePersistentCallback);
 
                 } else {
                     if (activePath !== path) {
@@ -330,36 +290,32 @@ require(['jquery', 'knockout', 'moment', '../util', '../sf', '../config', './../
                         $activePanel.fadeOut("fast", function handleHideCurrentPanel() {
                             $panel.css({ left: personaBarMenuWidth }).fadeIn("fast", function handleShowSelectedPanel() {
 
-                                activePath = path;
-                                activemodule = moduleName;
-                                inAnimation = false;
-                                self.loadTemplate(folderName, template, $panel, params, function () {
-                                    self.panelLoaded(params, loaded);
-                                });
-
-                                saveUserSetting({
+                                savePersistentCallback = function () {
+                                    activePath = path;
+                                    activemodule = moduleName;
+                                    inAnimation = false;
+                                    self.loadTemplate(folderName, template, $panel, params, function () {
+                                        self.panelLoaded(params);
+                                    });
+                                };
+                                self.persistent.save({
                                     expandPersonaBar: true,
                                     activeIdentifier: identifier
-                                });
+                                }, savePersistentCallback);
                             });
                         });
                     } else if (activemodule !== moduleName) {
                         activemodule = moduleName;
                         self.loadTemplate(folderName, template, $panel, params, function () {
-                            self.panelLoaded(params, loaded);
+                            self.panelLoaded(params);
                         });
                     }
                 }
-                setCloseButtonClass(panelId);
             },
-            panelLoaded: function (params, loaded) {
+            panelLoaded: function (params) {
                 extension.load(util, params);
-                this.loadCustomModules();
 
-                if (params.handleTabViewInModule !== true && loaded === false) {
-                    var panelId = util.getPanelIdFromPath(params.path);
-                    util.updatePanelTabView(panelId);
-                }
+                this.loadCustomModules();
             },
             initCustomModules: function (callback) {
                 if (config.customModules && config.customModules.length > 0) {
@@ -427,163 +383,10 @@ require(['jquery', 'knockout', 'moment', '../util', '../sf', '../config', './../
                 }
 
                 return settings;
-            },
-            updateMenuSettings: function(identifier, settings, menuItems) {
-                menuItems = menuItems || menuViewModel.menu.menuItems;
-                for (var i = 0; i < menuItems.length; i++) {
-                    var menuItem = menuItems[i];
-                    if (typeof menuItem.length === "number" && menuItem.length > 0) {
-                        this.updateMenuSettings(identifier, settings, menuItem);
-                    } else {
-                        if (menuItem.id === identifier) {
-                            menuItem.settings = JSON.stringify(settings);
-                        } else if (typeof menuItem.menuItems !== "undefined" && menuItem.menuItems.length > 0) {
-                            this.updateMenuSettings(identifier, settings, menuItem.menuItems);
-                        }
-                    }
-                }
-            },
-            loadBundleScript: function (path) {
-                if (path.indexOf('cdv=') === -1) {
-                    path += (path.indexOf('?') > -1 ? '&' : '?') + 'cdv=' + config.buildNumber;
-                }
-
-                $.ajax({
-                    dataType: "script",
-                    cache: true,
-                    url: path
-                });
-            },
-            panelViewData: function (panelId, viewData) {
-                var localStorageAllowed = function () {
-                    var mod = 'DNN_localStorageTEST';
-                    try {
-                        window.localStorage.setItem(mod, mod);
-                        window.localStorage.removeItem(mod);
-                        return true;
-                    } catch (e) {
-                        return false;
-                    }
-                };
-
-                if (!localStorageAllowed()) {
-                    return {};
-                }
-
-                var cacheKey = "DNN_PB_PANEL_VIEW";
-                var savedData = window.localStorage[cacheKey];
-                if (!savedData) {
-                    savedData = {};
-                } else {
-                    savedData = JSON.parse(savedData);
-                }
-
-                if (typeof viewData !== "undefined") {
-                    if (panelId === null && viewData === null) {
-                        window.localStorage.removeItem(cacheKey);
-                        savedData = {};
-                    } else {
-                        if (panelId === null) {
-                            savedData = viewData;
-                        } else {
-                            savedData[panelId] = viewData;
-                        }
-                        window.localStorage.setItem(cacheKey, JSON.stringify(savedData));
-                    }
-                }
-
-                return panelId ? savedData[panelId] : savedData;
-            },
-            savePanelTabView: function(panelId) {
-                var $panel = $('#' + panelId);
-                var $primaryTabs = $panel.find('.dnn-tabs.primary, .ui-tabs').eq(0).find('> ul > li');
-                if (!$primaryTabs.length) {
-                    $primaryTabs = $panel.find('.dnn-tabs.secondary').eq(0).find('> ul > li');
-                }
-                var $primarySelected = $primaryTabs.parent().find('>li[aria-selected="true"],>li[class*="selected"]');
-                if ($primarySelected.length) {
-                    var primaryIndex = $primaryTabs.index($primarySelected);
-
-                    var viewData = [primaryIndex];
-                    var $primaryPanel = $('#' + $primarySelected.attr('aria-controls'));
-                    if ($primaryPanel.length) {
-
-                        var $secondaryTabs = $primaryPanel.find('.dnn-tabs.secondary').eq(0).find('> ul > li');
-                        var $secondarySelected = $secondaryTabs.parent().find('>li[aria-selected="true"],>li[class*="selected"]');
-                        if ($secondarySelected.length) {
-                            var secondaryIndex = $secondaryTabs.index($secondarySelected);
-
-                            viewData.push(secondaryIndex);
-                        }
-                    }
-
-                    util.panelViewData(panelId, { tab: viewData });
-                }
-            },
-            updatePanelTabView: function (panelId) {
-                var viewData = (util.panelViewData(panelId) || {}).tab;
-                if (!viewData || !viewData.length) {
-                    return;
-                }
-
-                var sleep = function(timeout) {
-                    setTimeout(function() {
-                        util.updatePanelTabView(panelId);
-                    }, timeout);
-                }
-
-                var $panel = $('#' + panelId);
-                var $primaryTab = $panel.find('.dnn-tabs.primary,.ui-tabs').eq(0).find('> ul > li').eq(viewData[0]);
-                if (!$primaryTab.length) {
-                    $primaryTab = $panel.find('.dnn-tabs.secondary').eq(0).find('> ul > li').eq(viewData[0]);
-                }
-
-                if (!$primaryTab.length) {
-                    sleep(50);
-                    return;
-                }
-
-                if ($primaryTab.attr('aria-selected') !== "true" && $primaryTab.attr('class').indexOf('selected') === -1) {
-                    if ($primaryTab.find('a').length) {
-                        $primaryTab.find('a').trigger('click', [true]);
-                    } else {
-                        $primaryTab.trigger('click', [true]);
-                    }
-                }
-
-                if (viewData.length > 1) {
-                    var $primaryPanel = $('#' + $primaryTab.attr('aria-controls'));
-                    var $secondaryTab = $primaryPanel.find('.dnn-tabs.secondary').eq(0).find('> ul > li').eq(viewData[1]);
-                    if (!$secondaryTab.length) {
-                        sleep(50);
-                    }
-
-                    $secondaryTab.trigger('click', [true]);
-                }
             }
         };
         util = $.extend(util, utility);
         // end define util
-
-        function setCloseButtonClass(id) {
-            var panel = document.querySelector('#' + id + '>div');
-            if (panel != null && panel.innerHTML !== "") {
-                var page = panel.querySelector('.dnn-persona-bar-page');
-                if (page != null && page.classList.contains('full-width')) {
-                    $showSiteButton.addClass('full-width-mode');
-                }
-                else {
-                    $showSiteButton.removeClass();
-                }
-                $showSiteButton.show();
-                return;
-            }
-            else {
-                setTimeout(function () {
-                    setCloseButtonClass(id);
-                }, 100);
-            }
-        }
         
         function onShownPersonaBar() {
             (function handleResizeWindow() {
@@ -628,16 +431,12 @@ require(['jquery', 'knockout', 'moment', '../util', '../sf', '../config', './../
             return config.siteRoot || "/";
         }
 
-        function saveBtnEditSettings(success, error) {
-            saveUserSetting({
+        function saveBtnEditSettings(callback) {
+            util.persistent.save({
                 expandPersonaBar: false,
                 activePath: null,
                 activeIdentifier: null
-            }, success, error);
-        }
-
-        function saveUserSetting(settings, success, error) {
-            util.persistent.save(settings, success, error);
+            }, callback);
         }
 
         function inLockEditMode() {
@@ -702,24 +501,6 @@ require(['jquery', 'knockout', 'moment', '../util', '../sf', '../config', './../
             });
         }
 
-        function handleTabSelection (callback) {
-            $('#personabar-panels').on('click',
-                '> .socialpanel .dnn-tabs.primary > ul > li,' +
-                '> .socialpanel .dnn-tabs.secondary > ul > li,' +
-                '> .socialpanel .ui-tabs > ul > li > a', function (e, byScript) {
-                if (byScript) {
-                    return;
-                }
-
-                var panelId = $(this).parents('.socialpanel').attr('id');
-                setTimeout(function() {
-                    util.savePanelTabView(panelId);
-                }, 0);
-            });
-
-            callback();
-        }
-
         util.asyncParallel([
                 function (callback) {
                     util.loadResx(function onResxLoaded() {
@@ -767,15 +548,12 @@ require(['jquery', 'knockout', 'moment', '../util', '../sf', '../config', './../
                             if (width <= 1024 && width > 768) {
                                 $personaBarPlaceholder.css({ 'width': '700px' });
                                 $personaBarPanels.addClass("view-ipad landscape");
-                                $personaBar.addClass("view-ipad landscape");
                             } else if (width <= 768) {
                                 $personaBarPlaceholder.css({ 'width': '500px' });
                                 $personaBarPanels.addClass("view-ipad portrait");
-                                $personaBar.addClass("view-ipad portrait");
                             }
                             else {
                                 $personaBarPanels.removeClass("view-ipad landscape portrait");
-                                $personaBar.removeClass("view-ipad landscape portrait");
                             }
 
                             if (isTouch) {
@@ -821,7 +599,7 @@ require(['jquery', 'knockout', 'moment', '../util', '../sf', '../config', './../
                             }
                             
                             if (config.visible) {
-                                
+                                var mouseOnHovermenu = false;
 
                                 (function setupMenu() {
                                     $(".btn_panel .hovermenu").click(function(e) {
@@ -919,26 +697,10 @@ require(['jquery', 'knockout', 'moment', '../util', '../sf', '../config', './../
 
                                     var showMenuHandlers = [];
                                     var leaveSubMenuHandlers = [];
-                                    var mouseOnHovermenu = false;
-                                    var mouseOnButton = false;
-
-                                    var resetHandlers = function() {
-                                        if (showMenuHandlers.length > 0) {
-                                            $.each(showMenuHandlers, function(index, item) {
-                                                clearTimeout(item);
-                                            });
-                                            showMenuHandlers = [];
-                                        }
-
-                                        if (leaveSubMenuHandlers.length > 0) {
-                                            $.each(leaveSubMenuHandlers, function(index, item) {
-                                                clearTimeout(item);
-                                            });
-                                            leaveSubMenuHandlers = [];
-                                        }
-                                    };
-
                                     $('.btn_panel').each(function () {
+                                        var mouseOnButton = false;
+                                        mouseOnHovermenu = false;
+
                                         var $this = $(this);
                                         var hoverMenuId = $this.data('hovermenu-id');
                                         if (hoverMenuId === undefined) return;
@@ -947,7 +709,20 @@ require(['jquery', 'knockout', 'moment', '../util', '../sf', '../config', './../
                                         $this.hover(function () {
                                             mouseOnButton = true;
                                             if ($hoverMenu.css('display') === 'none' || $this.find('> div').length > 0) {
-                                                resetHandlers();
+                                                
+                                                if (showMenuHandlers.length > 0) {
+                                                    $.each(showMenuHandlers, function (index, item) {
+                                                        clearTimeout(item);
+                                                    });
+                                                    showMenuHandlers = [];
+                                                }
+
+                                                if (leaveSubMenuHandlers.length > 0) {
+                                                    $.each(leaveSubMenuHandlers, function (index, item) {
+                                                        clearTimeout(item);
+                                                    });
+                                                    leaveSubMenuHandlers = [];
+                                                }
 
                                                 showMenuHandlers.push(setTimeout(function () {
                                                     if (($hoverMenu.css('display') === 'none' || $this.find('> div').length > 0) && mouseOnButton) {
@@ -964,6 +739,7 @@ require(['jquery', 'knockout', 'moment', '../util', '../sf', '../config', './../
 
                                                             $('#' + hoverMenuId).hide();
                                                         });
+
 
                                                         $hoverMenu.show();
                                                         // Fix ie personabar hover menús
@@ -995,8 +771,6 @@ require(['jquery', 'knockout', 'moment', '../util', '../sf', '../config', './../
                                                             $iframe.width(personaBarMenuWidth);
                                                         }
                                                         $hoverMenu.hide();
-
-                                                        resetHandlers();
                                                     }
                                                 }, 50);
                                             }
@@ -1005,6 +779,8 @@ require(['jquery', 'knockout', 'moment', '../util', '../sf', '../config', './../
 
                                     $(".hovermenu").each(function () {
                                         var $this = $(this);
+                                        var mouseOnButton = false;
+                                        mouseOnHovermenu = false;
 
                                         $this.hover(function () {
                                             mouseOnHovermenu = true;
@@ -1017,8 +793,6 @@ require(['jquery', 'knockout', 'moment', '../util', '../sf', '../config', './../
                                                             $iframe.width(personaBarMenuWidth);
                                                         }
                                                         $this.hide();
-
-                                                        resetHandlers();
                                                     }
                                                 }, 800));
                                             }
@@ -1031,6 +805,10 @@ require(['jquery', 'knockout', 'moment', '../util', '../sf', '../config', './../
 
                             (function setupEditButton() {
                                 var $btnEdit = $("#Edit.btn_panel");
+                                if (width < 1024) {
+                                    $btnEdit.hide();
+                                    return;
+                                }
                                 if (!config.visible) {
                                     return;
                                 }
@@ -1044,17 +822,16 @@ require(['jquery', 'knockout', 'moment', '../util', '../sf', '../config', './../
 
                                 if (config.userMode !== 'Edit') {
                                     $btnEdit.on('click', function handleEdit() {
-                                        function toogleUserMode(mode, successCallback) {
+                                        function toogleUserMode(mode) {
                                             util.sf.moduleRoot = 'internalservices';
                                             util.sf.controller = "controlBar";
-                                            util.sf.post('ToggleUserMode', { UserMode: mode }, successCallback);
+                                            util.sf.post('ToggleUserMode', { UserMode: mode }, function handleToggleUserMode() {
+                                                window.parent.location.reload();
+                                            });
                                         };
-                                        util.closePersonaBar(function () {
-                                            toogleUserMode('EDIT', function() {
-                                                function reloadPage() {
-                                                    window.top.location.replace(window.top.location.href);
-                                                }
-                                                saveBtnEditSettings(reloadPage, reloadPage);
+                                        util.closePersonaBar(function() {
+                                            saveBtnEditSettings(function() {
+                                                toogleUserMode('EDIT');
                                             });
                                         });
                                     });
@@ -1101,18 +878,15 @@ require(['jquery', 'knockout', 'moment', '../util', '../sf', '../config', './../
                 function showPersonaBar(callback) {
                     var $personaBar = $(".personabar");
                     var $parentBody = $(parentBody);
-
                     if ($parentBody.hasClass('dnnEditState')) {
                         $personaBar.css({ left: 0, 'display': 'block' });
                         $parentBody.animate({ marginLeft: personaBarMenuWidth }, 1, 'linear', onShownPersonaBar);
                         callback();
                     } else {
-                        $iframe.width(personaBarMenuWidth);
                         $personaBar.show();
-          
-                        $personaBar.css({ left: 0, 'display': 'block' });
-                        $parentBody.animate({ marginLeft: personaBarMenuWidth }, 1, 'linear', onShownPersonaBar);
-                        $personaBar.animate({ left: 0 }, 1, 'linear', callback);
+                        $personaBar.css({ left: -100 });
+                        $parentBody.animate({ marginLeft: personaBarMenuWidth }, 200, 'linear', onShownPersonaBar);
+                        $personaBar.animate({ left: 0 }, 200, 'linear', callback);
                     }
 
                     $mask.click(function(e) {
@@ -1121,12 +895,9 @@ require(['jquery', 'knockout', 'moment', '../util', '../sf', '../config', './../
                 },
                 function initCustomModules(callback) {
                     util.initCustomModules(callback);
-                },
-                function (callback) {
-                    handleTabSelection(callback);
                 }
         ],
-        function loadPanelFromPersistedSetting() {
+        function loadPanelFromPersistedSetting() {            
             var pageUrl = window.top.location.href.toLowerCase();
             if (pageUrl.indexOf("skinsrc=") > -1 || pageUrl.indexOf("containersrc=") > -1 || pageUrl.indexOf("dnnprintmode=") > -1) {
                 return;

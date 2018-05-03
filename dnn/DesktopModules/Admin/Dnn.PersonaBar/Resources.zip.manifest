@@ -158,11 +158,11 @@
     </file>
     <file>
       <path>scripts/contrib/</path>
-      <name>jquery-ui.min.js</name>
+      <name>jqeury-ui-1.10.03-patched.js</name>
     </file>
     <file>
       <path>scripts/contrib/</path>
-      <name>jquery.easydropdown.min.js</name>
+      <name>jquery-ui.min.js</name>
     </file>
     <file>
       <path>scripts/contrib/</path>

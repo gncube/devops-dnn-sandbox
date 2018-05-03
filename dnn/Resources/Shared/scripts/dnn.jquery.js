@@ -214,17 +214,17 @@
         $wrap.each(function () {
             var $this = $(this);
             if (typeof (opts.onExpand) === "function") {
-                $this.on('onExpand', opts.onExpand);
+                $this.bind('onExpand', opts.onExpand);
             }
             if (typeof (opts.onHide) === "function") {
-                $this.on('onHide', opts.onHide);
+                $this.bind('onHide', opts.onHide);
             }
             // wire up click event to perform slide toggle
             $this.find(opts.clickToToggleSelector).click(function (e) {
                 var toggle = $(this).toggleClass(opts.toggleClass).parent().next(opts.regionToToggleSelector).slideToggle(function () {
                     var visible = $(this).is(':visible');
                     if (opts.saveState) {
-                        var id = $(toggle).prev().attr("id");
+                        var id = $(toggle.context.parentNode).attr("id");
                         var cookieId = id ? id.replace(/[^a-zA-Z0-9\-]+/g, "") : '';
                         if (cookieId) {
                             dnn.dom.setCookie(cookieId, visible, opts.cookieDays, '/', '', false, opts.cookieMilleseconds);
@@ -269,7 +269,7 @@
                 // default value
                 var isOpen = false;
                 if ((indexInArray === 0 && opts.defaultState == "first") || // cookie set to true OR first panel
-                    ($parentSeparator.length > 0 && groupPanelIndex === 0 && opts.defaultState == "first") || // grouping is used & its the first panel in its group
+                    ($parentSeparator.size() > 0 && groupPanelIndex === 0 && opts.defaultState == "first") || // grouping is used & its the first panel in its group
                     (opts.defaultState == "open"))  // default open
                 {
                     isOpen = true;
@@ -624,9 +624,9 @@
                 cb(e);
             }
 
-            $ch.on('disable', function () { ch.wrapperInner.addClass(settings.cls + '-disabled'); }).on('enable', function () { ch.wrapperInner.removeClass(settings.cls + '-disabled'); });
-            $ch.on('check', function () { ch.wrapper.addClass(settings.cls + '-checked'); }).on('uncheck', function () { ch.wrapper.removeClass(settings.cls + '-checked'); });
-            $ch.on('focus', function (e) { if (!e.isTrigger) ch.wrapper.addClass(settings.cls + '-focus'); }).on('blur', function () { ch.wrapper.removeClass(settings.cls + '-focus'); });
+            $ch.bind('disable', function () { ch.wrapperInner.addClass(settings.cls + '-disabled'); }).bind('enable', function () { ch.wrapperInner.removeClass(settings.cls + '-disabled'); });
+            $ch.bind('check', function () { ch.wrapper.addClass(settings.cls + '-checked'); }).bind('uncheck', function () { ch.wrapper.removeClass(settings.cls + '-checked'); });
+            $ch.bind('focus', function (e) { if (!e.isTrigger) ch.wrapper.addClass(settings.cls + '-focus'); }).bind('blur', function () { ch.wrapper.removeClass(settings.cls + '-focus'); });
 
             /* Applying checkbox state */
             if (ch.checked)
@@ -691,7 +691,7 @@
                 }, 400);
             }
 
-            $pd.on('mousemove', function (e) {
+            $pd.bind('mousemove', function (e) {
                 var x = e.pageX; var y = e.pageY;
                 var pos = $('body').css('position');
                 if (pos == 'relative') y -= 38;
@@ -1996,7 +1996,7 @@
                 });
 
                 $(data.fake_input).dnnResetAutosize(settings);
-                $(data.holder).on('click', data, function (event) {
+                $(data.holder).bind('click', data, function (event) {
                     $(event.data.real_input).triggerHandler('focus');
                     $(event.data.fake_input).triggerHandler('focus');
                     return false;
@@ -2008,7 +2008,7 @@
                         }
 
                         $(data.fake_input).dnnAutocomplete(settings.autocomplete_url, settings.autocomplete);
-                        $(data.fake_input).on('result', data, function (event, tag) {
+                        $(data.fake_input).bind('result', data, function (event, tag) {
                             if (tag) {
                                 var tagslist = $(event.data.real_input).val().split(delimiter[id]);
                                 if (tagslist[0] == '') {
@@ -2027,7 +2027,7 @@
                 } else {
                     // if a user tabs out of the field, create a new tag
                     // this is only available if autocomplete is not used.
-                    $(data.fake_input).on('blur', data, function (event) {
+                    $(data.fake_input).bind('blur', data, function (event) {
                         var d = $(this).attr('data-default');
                         var tagslist = $(event.data.real_input).val().split(delimiter[id]);
                         if (tagslist[0] == '') {
@@ -2104,7 +2104,7 @@
 
                 var tagTooLongErrMsg = $('<span class="dnnFormError dnnFormMessage">' + String.format(settings.moreThanMaxCharsErrorText, settings.maxChars) + '</span>');
                 // if user types a comma, create a new tag
-                $(data.fake_input).on('keypress keydown blur', data, function (event) {
+                $(data.fake_input).bind('keypress keydown blur', data, function (event) {
                     if ($(this).val() === "" || clickedOnAutoComplete) {
                         return;
                     }
@@ -2124,7 +2124,7 @@
                     return true;
                 });
                 //Delete last tag on backspace
-                data.removeWithBackspace && $(data.fake_input).on('keydown', function (event) {
+                data.removeWithBackspace && $(data.fake_input).bind('keydown', function (event) {
                     if (event.keyCode == 8 && $(this).val() == '') {
                         event.preventDefault();
                         var lastTag = $(this).closest('.dnnTagsInput').find('.tag:last').text();
@@ -2325,7 +2325,7 @@
                             $(this).toggleErrorMessage({ show: false });
                         };
 
-                        ele.off('focus', hideErrorInfo).on('focus', hideErrorInfo);
+                        ele.unbind('focus', hideErrorInfo).bind('focus', hideErrorInfo);
                     }
                 }
 
@@ -2365,8 +2365,8 @@
 
             $(this).toggleErrorMessage({ show: false, removeErrorMessage: false });
         };
-        $('.RadPicker_Default a.rcCalPopup').off('click', dnnRadPickerPopupFix).on('click', dnnRadPickerPopupFix);
-        $('.RadPicker_Default .riTextBox').off('focus', hideErrorInfo).on('focus', hideErrorInfo);
+        $('.RadPicker_Default a.rcCalPopup').unbind('click', dnnRadPickerPopupFix).bind('click', dnnRadPickerPopupFix);
+        $('.RadPicker_Default .riTextBox').unbind('focus', hideErrorInfo).bind('focus', hideErrorInfo);
     };
 
     // remove combobox inline style
@@ -2451,7 +2451,7 @@
             ele.scrollPane = $this.jScrollPane();
             var api = ele.scrollPane.data('jsp');
             var throttleTimeout;
-            $(window).on(
+            $(window).bind(
                 'resize',
                 function () {
                     if (!$.support.cssFloat) {
@@ -2510,11 +2510,11 @@
 
     $.fn.extend({
         mousewheel: function (fn) {
-            return fn ? this.on("mousewheel", fn) : this.trigger("mousewheel");
+            return fn ? this.bind("mousewheel", fn) : this.trigger("mousewheel");
         },
 
         unmousewheel: function (fn) {
-            return this.off("mousewheel", fn);
+            return this.unbind("mousewheel", fn);
         }
     });
 
@@ -2604,7 +2604,6 @@
         var xhr = new XMLHttpRequest;
         return !!(xhr && ('upload' in xhr) && ('onprogress' in xhr.upload));
     };
-
     $.fn.dnnFileUpload = function (settings) {
         return this.each(function () {
             // set scope and settings, service
@@ -2652,7 +2651,7 @@
                 done: function (e, data) {
                     $('#' + settings.progressBarId).parent().hide();
                     var img = new Image();
-                    $(img).on('load', function () {
+                    $(img).load(function () {
                         $('#' + settings.dropZoneId + ' img').remove();
                         $(img).css({ 'max-width': 180, 'max-height': 150 }).insertBefore($('#' + settings.dropZoneId + ' span'));
                     });
@@ -2670,15 +2669,10 @@
                         src = data.result;
 
                     if (src && $.trim(src)) {
-                        var profileImagePath = dnn.getVar("sf_siteRoot", "/") + 'DnnImageHandler.ashx?mode=securefile&fileId=' + data.result.FileId + '&MaxWidth=180&MaxHeight=150';
-                        img.src = profileImagePath;
-                        
+                        img.src = src;
                         var fileName = data.result.FilePath.replace('\\', '/');
                         if (fileName.indexOf('/') > -1) {
                             fileName = fileName.split('/')[fileName.split('/').length - 1];
-                        }
-                        if (fileName.indexOf('?') > -1) {
-                            fileName = fileName.split('?')[0];
                         }
                         
                         dnn[settings.filesComboId].refresh(dnn[settings.foldersComboId].selectedItem().key);
@@ -2731,18 +2725,25 @@
             setTimeout(function () {
                 dnn[settings.filesComboId].options.services.parameters.parentId = settings.selectedFolderId;
                 var filesCombo = dnn[settings.filesComboId];
-                var selectedFileId = filesCombo.selectedItem() ? filesCombo.selectedItem().key : null;                
+                var selectedFileId = filesCombo.selectedItem() ? filesCombo.selectedItem().key : null;
+                url = service.getServiceRoot('internalservices') + 'fileupload/loadimage';
              	var fileId  = selectedFileId ? parseInt(selectedFileId) : 0;
                 if (fileId > 0) {
-                    var maxWidth = 180, maxHeight = 150;
-                    var profileImagePath = dnn.getVar("sf_siteRoot", "/") + 'DnnImageHandler.ashx?mode=securefile&fileId=' + fileId + '&MaxWidth=' + maxWidth + '&MaxHeight=' + maxHeight;
-                    var img = new Image();
-
-                    $(img).on('load', function () {
-                        $('#' + settings.dropZoneId + ' img').remove();
-                        $(img).css({ 'max-width': maxWidth, 'max-height': maxHeight }).insertBefore($('#' + settings.dropZoneId + ' span'));
+                    $.ajax({
+                        url: url,
+                        type: 'GET',
+                        data: { fileId: selectedFileId },
+                        success: function (d) {
+                            var img = new Image();
+                            $(img).load(function () {
+                                $('#' + settings.dropZoneId + ' img').remove();
+                                $(img).css({ 'max-width': 180, 'max-height': 150 }).insertBefore($('#' + settings.dropZoneId + ' span'));
+                            });
+                            img.src = d;
+                        },
+                        error: function () {
+                        }
                     });
-                    img.src = profileImagePath;        
                 }
             }, 500);
         });
@@ -2787,16 +2788,24 @@
 
         if (node) {
             var fileId = node.key;
+            var service = $.dnnSF();
+            var url = service.getServiceRoot('internalservices') + 'fileupload/loadimage';
             if (fileId) {
-                var maxWidth = 180, maxHeight = 150;
-                var profileImagePath = dnn.getVar("sf_siteRoot", "/") + 'DnnImageHandler.ashx?mode=securefile&fileId=' + fileId + '&MaxWidth=' + maxWidth + '&MaxHeight=' + maxHeight;
-                var img = new Image();
-
-                $(img).on('load', function () {
-                    $('#' + settings.dropZoneId + ' img').remove();
-                    $(img).css({ 'max-width': maxWidth, 'max-height': maxHeight }).insertBefore($('#' + settings.dropZoneId + ' span'));
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    data: { fileId: fileId },
+                    success: function (d) {
+                        var img = new Image();
+                        $(img).load(function () {
+                            $('#' + settings.dropZoneId + ' img').remove();
+                            $(img).css({ 'max-width': 180, 'max-height': 150 }).insertBefore($('#' + settings.dropZoneId + ' span'));
+                        });
+                        img.src = d;
+                    },
+                    error: function () {
+                    }
                 });
-                img.src = profileImagePath;        
             }
             else
                 $('#' + settings.dropZoneId + ' img').remove();
@@ -3036,15 +3045,15 @@
                     verticalDrag = verticalTrack.find('>.jspDrag');
 
                     if (settings.showArrows) {
-                        arrowUp = $('<a class="jspArrow jspArrowUp" />').on(
+                        arrowUp = $('<a class="jspArrow jspArrowUp" />').bind(
 							'mousedown.jsp', getArrowScroll(0, -1)
-						).on('click.jsp', nil);
-                        arrowDown = $('<a class="jspArrow jspArrowDown" />').on(
+						).bind('click.jsp', nil);
+                        arrowDown = $('<a class="jspArrow jspArrowDown" />').bind(
 							'mousedown.jsp', getArrowScroll(0, 1)
-						).on('click.jsp', nil);
+						).bind('click.jsp', nil);
                         if (settings.arrowScrollOnHover) {
-                            arrowUp.on('mouseover.jsp', getArrowScroll(0, -1, arrowUp));
-                            arrowDown.on('mouseover.jsp', getArrowScroll(0, 1, arrowDown));
+                            arrowUp.bind('mouseover.jsp', getArrowScroll(0, -1, arrowUp));
+                            arrowDown.bind('mouseover.jsp', getArrowScroll(0, 1, arrowDown));
                         }
 
                         appendArrows(verticalTrack, settings.verticalArrowPositions, arrowUp, arrowDown);
@@ -3065,22 +3074,22 @@
 						function () {
 						    verticalDrag.removeClass('jspHover');
 						}
-					).on(
+					).bind(
 						'mousedown.jsp',
 						function (e) {
 						    // Stop IE from allowing text selection
-						    $('html').on('dragstart.jsp selectstart.jsp', nil);
+						    $('html').bind('dragstart.jsp selectstart.jsp', nil);
 
 						    verticalDrag.addClass('jspActive');
 
 						    var startY = e.pageY - verticalDrag.position().top;
 
-						    $('html').on(
+						    $('html').bind(
 								'mousemove.jsp',
 								function (e) {
 								    positionDragY(e.pageY - startY, false);
 								}
-							).on('mouseup.jsp mouseleave.jsp', cancelDrag);
+							).bind('mouseup.jsp mouseleave.jsp', cancelDrag);
 						    return false;
 						}
 					);
@@ -3127,15 +3136,15 @@
                     horizontalDrag = horizontalTrack.find('>.jspDrag');
 
                     if (settings.showArrows) {
-                        arrowLeft = $('<a class="jspArrow jspArrowLeft" />').on(
+                        arrowLeft = $('<a class="jspArrow jspArrowLeft" />').bind(
 							'mousedown.jsp', getArrowScroll(-1, 0)
-						).on('click.jsp', nil);
-                        arrowRight = $('<a class="jspArrow jspArrowRight" />').on(
+						).bind('click.jsp', nil);
+                        arrowRight = $('<a class="jspArrow jspArrowRight" />').bind(
 							'mousedown.jsp', getArrowScroll(1, 0)
-						).on('click.jsp', nil);
+						).bind('click.jsp', nil);
                         if (settings.arrowScrollOnHover) {
-                            arrowLeft.on('mouseover.jsp', getArrowScroll(-1, 0, arrowLeft));
-                            arrowRight.on('mouseover.jsp', getArrowScroll(1, 0, arrowRight));
+                            arrowLeft.bind('mouseover.jsp', getArrowScroll(-1, 0, arrowLeft));
+                            arrowRight.bind('mouseover.jsp', getArrowScroll(1, 0, arrowRight));
                         }
                         appendArrows(horizontalTrack, settings.horizontalArrowPositions, arrowLeft, arrowRight);
                     }
@@ -3147,22 +3156,22 @@
 						function () {
 						    horizontalDrag.removeClass('jspHover');
 						}
-					).on(
+					).bind(
 						'mousedown.jsp',
 						function (e) {
 						    // Stop IE from allowing text selection
-						    $('html').on('dragstart.jsp selectstart.jsp', nil);
+						    $('html').bind('dragstart.jsp selectstart.jsp', nil);
 
 						    horizontalDrag.addClass('jspActive');
 
 						    var startX = e.pageX - horizontalDrag.position().left;
 
-						    $('html').on(
+						    $('html').bind(
 								'mousemove.jsp',
 								function (e) {
 								    positionDragX(e.pageX - startX, false);
 								}
-							).on('mouseup.jsp mouseleave.jsp', cancelDrag);
+							).bind('mouseup.jsp mouseleave.jsp', cancelDrag);
 						    return false;
 						}
 					);
@@ -3281,13 +3290,13 @@
 
                 eve = ele ? 'mouseout.jsp' : 'mouseup.jsp';
                 ele = ele || $('html');
-                ele.on(
+                ele.bind(
 					eve,
 					function () {
 					    arrow.removeClass('jspActive');
 					    scrollTimeout && clearTimeout(scrollTimeout);
 					    scrollTimeout = null;
-					    ele.off(eve);
+					    ele.unbind(eve);
 					}
 				);
             }
@@ -3295,7 +3304,7 @@
             function initClickOnTrack() {
                 removeClickOnTrack();
                 if (isScrollableV) {
-                    verticalTrack.on(
+                    verticalTrack.bind(
 						'mousedown.jsp',
 						function (e) {
 						    if (e.originalTarget === undefined || e.originalTarget == e.currentTarget) {
@@ -3331,10 +3340,10 @@
 									cancelClick = function () {
 									    scrollTimeout && clearTimeout(scrollTimeout);
 									    scrollTimeout = null;
-									    $(document).off('mouseup.jsp', cancelClick);
+									    $(document).unbind('mouseup.jsp', cancelClick);
 									};
 						        doScroll();
-						        $(document).on('mouseup.jsp', cancelClick);
+						        $(document).bind('mouseup.jsp', cancelClick);
 						        return false;
 						    }
 						}
@@ -3342,7 +3351,7 @@
                 }
 
                 if (isScrollableH) {
-                    horizontalTrack.on(
+                    horizontalTrack.bind(
 						'mousedown.jsp',
 						function (e) {
 						    if (e.originalTarget === undefined || e.originalTarget == e.currentTarget) {
@@ -3378,10 +3387,10 @@
 									cancelClick = function () {
 									    scrollTimeout && clearTimeout(scrollTimeout);
 									    scrollTimeout = null;
-									    $(document).off('mouseup.jsp', cancelClick);
+									    $(document).unbind('mouseup.jsp', cancelClick);
 									};
 						        doScroll();
-						        $(document).on('mouseup.jsp', cancelClick);
+						        $(document).bind('mouseup.jsp', cancelClick);
 						        return false;
 						    }
 						}
@@ -3391,15 +3400,15 @@
 
             function removeClickOnTrack() {
                 if (horizontalTrack) {
-                    horizontalTrack.off('mousedown.jsp');
+                    horizontalTrack.unbind('mousedown.jsp');
                 }
                 if (verticalTrack) {
-                    verticalTrack.off('mousedown.jsp');
+                    verticalTrack.unbind('mousedown.jsp');
                 }
             }
 
             function cancelDrag() {
-                $('html').off('dragstart.jsp selectstart.jsp mousemove.jsp mouseup.jsp mouseleave.jsp');
+                $('html').unbind('dragstart.jsp selectstart.jsp mousemove.jsp mouseup.jsp mouseleave.jsp');
 
                 if (verticalDrag) {
                     verticalDrag.removeClass('jspActive');
@@ -3597,7 +3606,7 @@
             }
 
             function initMousewheel() {
-                container.off(mwEvent).on(
+                container.unbind(mwEvent).bind(
 					mwEvent,
 					function (event, delta, deltaX, deltaY) {
 					    var dX = horizontalDragPosition, dY = verticalDragPosition;
@@ -3609,7 +3618,7 @@
             }
 
             function removeMousewheel() {
-                container.off(mwEvent);
+                container.unbind(mwEvent);
             }
 
             function nil() {
@@ -3617,7 +3626,7 @@
             }
 
             function initFocusHandler() {
-                pane.find(':input,a').off('focus.jsp').on(
+                pane.find(':input,a').unbind('focus.jsp').bind(
 					'focus.jsp',
 					function (e) {
 					    scrollToElement(e.target, false);
@@ -3626,7 +3635,7 @@
             }
 
             function removeFocusHandler() {
-                pane.find(':input,a').off('focus.jsp');
+                pane.find(':input,a').unbind('focus.jsp');
             }
 
             function initKeyboardNav() {
@@ -3642,8 +3651,8 @@
 				);
 
                 elem.attr('tabindex', 0)
-					.off('keydown.jsp keypress.jsp')
-					.on(
+					.unbind('keydown.jsp keypress.jsp')
+					.bind(
 						'keydown.jsp',
 						function (e) {
 						    if (e.target !== this && !(validParents.length && $(e.target).closest(validParents).length)) {
@@ -3674,7 +3683,7 @@
 						    elementHasScrolled = e.keyCode == keyDown && dX != horizontalDragPosition || dY != verticalDragPosition;
 						    return !elementHasScrolled;
 						}
-					).off(
+					).bind(
 						'keypress.jsp', // For FF/ OSX so that we can cancel the repeat key presses if the JSP scrolls...
 						function (e) {
 						    if (e.keyCode == keyDown) {
@@ -3728,7 +3737,7 @@
             function removeKeyboardNav() {
                 elem.attr('tabindex', '-1')
 					.removeAttr('tabindex')
-					.off('keydown.jsp keypress.jsp');
+					.unbind('keydown.jsp keypress.jsp');
             }
 
             function observeHash() {
@@ -3842,7 +3851,7 @@
 					moved,
 					moving = false;
 
-                container.off('touchstart.jsp touchmove.jsp touchend.jsp click.jsp-touchclick').on(
+                container.unbind('touchstart.jsp touchmove.jsp touchend.jsp click.jsp-touchclick').bind(
 					'touchstart.jsp',
 					function (e) {
 					    var touch = e.originalEvent.touches[0];
@@ -3853,7 +3862,7 @@
 					    moved = false;
 					    moving = true;
 					}
-				).on(
+				).bind(
 					'touchmove.jsp',
 					function (ev) {
 					    if (!moving) {
@@ -3870,7 +3879,7 @@
 					    // return true if there was no movement so rest of screen can scroll
 					    return dX == horizontalDragPosition && dY == verticalDragPosition;
 					}
-				).on(
+				).bind(
 					'touchend.jsp',
 					function (e) {
 					    moving = false;
@@ -3878,7 +3887,7 @@
 							return false;
 						}*/
 					}
-				).on(
+				).bind(
 					'click.jsp-touchclick',
 					function (e) {
 					    if (moved) {
@@ -3892,7 +3901,7 @@
             function destroy() {
                 var currentY = contentPositionY(),
 					currentX = contentPositionX();
-                elem.removeClass('jspScrollable').off('.jsp');
+                elem.removeClass('jspScrollable').unbind('.jsp');
                 elem.replaceWith(originalElement.append(pane.children()));
                 originalElement.scrollTop(currentY);
                 originalElement.scrollLeft(currentX);
@@ -4149,7 +4158,7 @@
         };
 
         return $(this).each(function () {
-            $(this).off('click', clicked).on('click', clicked);
+            $(this).unbind('click', clicked).bind('click', clicked);
             $(this).parent().hoverIntent(hoverConfig);
         });
     };
@@ -4159,7 +4168,7 @@
     $.fn.onEnter = function (fn) {
         return this.each(function () {
             var $this = $(this);
-            $this.on('onEnter', fn);
+            $this.bind('onEnter', fn);
             $this.keydown(function (e) {
                 if ((e.which && e.which === 13) || (e.keyCode && e.keyCode === 13)) {
                     e.preventDefault();
@@ -4252,7 +4261,7 @@
             $('.dnnForm input[type="checkbox"]').dnnCheckbox();
             $('.dnnForm input[type="radio"]').dnnCheckbox({ cls: 'dnnRadiobutton' });
             $('.dnnTooltip').dnnTooltip();
-            $('.dnnForm input[type="text"], .dnnForm input[type="password"]').off('focus', inputFocusFix).on('focus', inputFocusFix);
+            $('.dnnForm input[type="text"], .dnnForm input[type="password"]').unbind('focus', inputFocusFix).bind('focus', inputFocusFix);
             $('.dnnForm :file').dnnFileInput();
 	        $('.dnnForm input[data-default]').dnnPlaceholder();
         }, 200);

@@ -62,7 +62,7 @@
 					}
 
 					$loginButton.addClass("dnnDisabledAction");
-					window.setTimeout(function () { eval($loginButton.attr('href')); }, 100);
+					eval($loginButton.attr('href'));
 					e.preventDefault();
 					return false;
 				}

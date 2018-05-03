@@ -3,7 +3,15 @@
     window.ko = ko;
 
     var config = cf.init();
-
+    function loadScript() {
+        //var url = "http://localhost:8080/dist/pages-bundle.js"
+        var url = "modules/dnn.pages/scripts/bundles/pages-bundle.js";
+        $.ajax({
+            dataType: "script",
+            cache: true,
+            url: url
+        });
+    }
     var init = function (wrapper, util, params, callback) {
         window.dnn.initPages = function initializePages() {
             return {
@@ -16,7 +24,7 @@
             };
         };
 
-        util.loadBundleScript('modules/dnn.pages/scripts/bundles/pages-bundle.js');
+        loadScript();
 
         if (typeof callback === 'function') {
             callback();

@@ -20,13 +20,13 @@
         }
 
         // error response 
-        $fileUploadWrapperSelector.on('fileuploadfail', function (e, data) {
+        $fileUploadWrapperSelector.bind('fileuploadfail', function (e, data) {
             opts.complete(data);
             displayError(opts.serverErrorMessage);
         });
 
         // success response
-        $fileUploadWrapperSelector.on('fileuploaddone', function (e, data) {
+        $fileUploadWrapperSelector.bind('fileuploaddone', function (e, data) {
             opts.complete(data);
             var result;
             if (data.result[0].body) {

@@ -223,7 +223,6 @@ small {
     font-size: 12px;
     font-weight: normal;
     line-height: 18px;
-    word-wrap: break-word;
 }
 
 /* disabled text styles */
@@ -231,8 +230,6 @@ small {
 .NormalDeleted {
     color: #999;
 }
-
-
 
 /* text style used for help text rendered by modules */
 .Help {
@@ -970,7 +967,7 @@ ul.dnnAdminTabNav {
     margin-top: 5px;
     margin-left: 0;
     width: 100%;
-    min-height: 37px;
+    height: 37px;
     border-bottom: 1px solid #c2c2c2;
 }
 
@@ -3286,7 +3283,7 @@ div.ModDNNLinksC .urlControl span.dnnRadiobutton {
 }
 
 /* used to collapse panes without any content in them */
-body:not(.dnnEditState) .DNNEmptyPane {
+.DNNEmptyPane {
     width: 0px;
 }
 
@@ -3819,10 +3816,3 @@ div.dnnSliderInput .dnnTooltip .dnnFormHelpContent {
 	z-index: 1;
 }
 /*END DNN Slider Input Style*/
-
-/* Overflow for dnnMenu dropdown */
-#dnnMenu .dropdown-menu {
-    word-wrap: break-word;
-}
-
-/* End Overflow for dnnMenu dropdown */

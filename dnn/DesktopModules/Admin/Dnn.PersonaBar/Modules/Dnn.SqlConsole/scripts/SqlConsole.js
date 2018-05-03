@@ -1,6 +1,6 @@
 /*
 DotNetNuke® - http://www.dotnetnuke.com
-Copyright (c) 2002-2018
+Copyright (c) 2002-2016
 by DotNetNuke Corporation
 All Rights Reserved
 */
@@ -203,16 +203,6 @@ define(['jquery',
             return cloneData;
         }
 
-        var encode = function (item) {
-            for (var name in item) {
-                if (item.hasOwnProperty(name) && item[name]) {
-                    item[name] = $('<div/>').text(item[name]).html();
-                }
-            }
-
-            return item;
-        };
-
         var matchKeyword = function (data, keyword) {
             if (!keyword) {
                 return true;
@@ -335,7 +325,7 @@ define(['jquery',
                 var source = table.rows();
                 for (var i = 0; i < source.length; i++) {
                     var keywords = table.keywords();
-                    var item = encode(clone(source[i]));
+                    var item = clone(source[i]);
                     if (matchKeyword(item, keywords)) {
                         filterData.push(item);
                     }
@@ -435,9 +425,9 @@ define(['jquery',
 
             table.pageData = ko.computed(function () {
                 var data = [];
-                var filterData = table.filterData();
+
                 for (var i = table.startIndex() ; i < table.endIndex() ; i++) {
-                    data.push(filterData[i]);
+                    data.push(table.filterData()[i]);
                 }
                 return data;
             });
@@ -663,15 +653,14 @@ define(['jquery',
                     var response = eval('(' + xhr.responseText + ')');
                     if (response['Error'] || response['Message']) {
                         message = response['Error'] || response['Message'];
+                        message = message.replace(/\r\n/gi, '<br />');
                     }
                 }
                 viewModel.loading(false);
-                utility.notifyError(htmlDecode(message), { clickToClose: true});
+                utility.notifyError(message, { clickToClose: true});
             });
         }
-        function htmlDecode(textToDecode) {
-            return $('<div />').text(textToDecode).html();
-        }
+
         var queryChanged = function (data) {
             queryEditor.setValue(data);
         }

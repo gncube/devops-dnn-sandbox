@@ -1,6 +1,6 @@
 ﻿// DotNetNuke® - http://www.dnnsoftware.com
 //
-// Copyright (c) 2002-2018, DNN Corp.
+// Copyright (c) 2002-2016, DNN Corp.
 // All rights reserved.
 
 if (typeof dnn === "undefined" || dnn === null) { dnn = {}; };
@@ -211,7 +211,7 @@ if (typeof dnn.ContentEditorManager === "undefined" || dnn.ContentEditorManager 
                                             '<input type="hidden" id="AddExistingModule_FolderPicker_State" />' +
                                         '</li>' +
                                         '<li>' +
-                                            '<input type="checkbox" class="copy-module" checked="true" aria-label="Copy" /><label>' + dnn.ContentEditorManagerResources.makeCopy + '</label>' +
+                                            '<input type="checkbox" class="copy-module" aria-label="Copy" /><label>' + dnn.ContentEditorManagerResources.makeCopy + '</label>' +
                                         '</li>' +
                                         '<div class="clear"></div>' +
                                     '</ul>' +

@@ -6,6 +6,16 @@ define(['jquery',
         var utility;
         var config = cf.init();
 
+        function loadScript() {
+             var url = "modules/dnn.extensions/scripts/bundles/extensions-bundle.js";
+            
+            $.ajax({
+                dataType: "script",
+                cache: true,
+                url: url
+            });
+        }
+
         return {
             init: function (wrapper, util, params, callback) {
                 utility = util;
@@ -13,12 +23,11 @@ define(['jquery',
                 window.dnn.initExtensions = function initializeExtensions() {
                     return {
                         utility: utility,
-                        siteRoot: config.siteRoot,
                         settings: params.settings,
                         moduleName: 'Extensions'
                     };
                 };
-                utility.loadBundleScript('modules/dnn.extensions/scripts/bundles/extensions-bundle.js');
+                loadScript();
 
                 if (typeof callback === "function") {
                     callback();
